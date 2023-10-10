@@ -9,7 +9,7 @@
 
         public Cart(string userName)
         {
-            userName = userName ?? string.Empty;
+            UserName = userName ?? string.Empty;
         }
 
         public decimal TotalPrice 
