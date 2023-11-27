@@ -5,15 +5,12 @@ namespace Catalog.API.Data
 {
     public class CatalogContext : ICatalogContext
     {
-        private DatabaseSettings _databaseSettings;
-
         public CatalogContext(IConfiguration configuration)
         {
-            _databaseSettings = configuration.GetSection("DatabaseSettings").Get<DatabaseSettings>();
-            var client = new MongoClient(_databaseSettings.ConnectionString);
-            var database = client.GetDatabase(_databaseSettings.DatabaseName);
+            var client = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
+            var database = client.GetDatabase(configuration["DatabaseSettings:DatabaseName"]);
 
-            Products = database.GetCollection<Product>(_databaseSettings.CollectionName);
+            Products = database.GetCollection<Product>(configuration["DatabaseSettings:CollectionName"]);
             CatalogContextSeed.SeedData(Products);
         }
         public IMongoCollection<Product> Products { get; }

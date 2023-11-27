@@ -1,5 +1,4 @@
-﻿using Discount.API.Model;
-using Npgsql;
+﻿using Npgsql;
 
 namespace Discount.API.Extensions
 {
@@ -19,7 +18,7 @@ namespace Discount.API.Extensions
             {
                 logger.LogInformation("Migrating postgresql database.");
 
-                using var connection = new NpgsqlConnection(configuration.GetSection("DatabaseSettings").Get<DatabaseSettings>().ConnectionString);
+                using var connection = new NpgsqlConnection(configuration["DatabaseSettings:ConnectionString"]);
                 connection.Open();
 
                 using var command = new NpgsqlCommand
