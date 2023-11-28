@@ -32,10 +32,10 @@ namespace Discount.API.Extensions
                 command.CommandText = @"CREATE TABLE Coupon(Id SERIAL PRIMARY KEY, ProductName VARCHAR(24) NOT NULL, Description TEXT, Amount INT)";
                 command.ExecuteNonQuery();
 
-                command.CommandText = "INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('IPhone 15', 'IPhone Discount', 95000)";
+                command.CommandText = "INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('IPhone X', 'IPhone Discount', 250)";
                 command.ExecuteNonQuery();
 
-                command.CommandText = "INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Samsung S22', 'Samsung Discount', 75000)";
+                command.CommandText = "INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Samsung 10', 'Samsung Discount', 250)";
                 command.ExecuteNonQuery();
 
                 logger.LogInformation("Migrated postgresql database.");
