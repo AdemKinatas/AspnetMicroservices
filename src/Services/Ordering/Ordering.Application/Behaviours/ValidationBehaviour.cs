@@ -8,7 +8,7 @@ namespace Ordering.Application.Behaviours
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public ValidatorBehaviour(IEnumerable<IValidator<TRequest>> validators, ILogger<ValidatorBehaviour<TRequest, TResponse>> logger)
+        public ValidatorBehaviour(IEnumerable<IValidator<TRequest>> validators)
         {
             _validators = validators ?? throw new ArgumentNullException(nameof(validators));
         }
