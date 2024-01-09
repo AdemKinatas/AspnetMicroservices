@@ -5,7 +5,7 @@ using Ordering.Application.Model;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
-namespace Ordering.Infrastructure.Notification
+namespace Ordering.Infrastructure.Notifications
 {
     public class EmailService : IEmailService
     {
