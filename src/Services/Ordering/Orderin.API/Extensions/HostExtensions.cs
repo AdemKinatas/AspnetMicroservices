@@ -5,9 +5,11 @@ namespace Orderin.API.Extensions
 {
     public static class HostExtensions
     {
-        public static IHost MigrateDatabase<TContext>(this IHost host,
-                                             Action<TContext, IServiceProvider> seeder,
-                                             int? retry = 0) where TContext : DbContext
+        public static IHost MigrateDatabase<TContext>(
+            this IHost host,
+            Action<TContext, IServiceProvider> seeder,
+            int? retry = 0) 
+            where TContext : DbContext
         {
             int retryForAvailability = retry.Value;
 
@@ -32,7 +34,7 @@ namespace Orderin.API.Extensions
                     if (retryForAvailability < 50)
                     {
                         retryForAvailability++;
-                        System.Threading.Thread.Sleep(2000);
+                        Thread.Sleep(2000);
                         MigrateDatabase<TContext>(host, seeder, retryForAvailability);
                     }
                 }
@@ -40,10 +42,11 @@ namespace Orderin.API.Extensions
             return host;
         }
 
-        private static void InvokeSeeder<TContext>(Action<TContext, IServiceProvider> seeder,
-                                                    TContext context,
-                                                    IServiceProvider services)
-                                                    where TContext : DbContext
+        private static void InvokeSeeder<TContext>(
+            Action<TContext, IServiceProvider> seeder,
+            TContext context,
+            IServiceProvider services)
+            where TContext : DbContext
         {
             context.Database.Migrate();
             seeder(context, services);

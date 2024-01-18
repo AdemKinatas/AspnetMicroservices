@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Ordering.Application.Contracts.Infrastructure;
 using Ordering.Application.Contracts.Persistence;
 using Ordering.Application.Model;
-using Ordering.Infrastructure.Notification;
+using Ordering.Infrastructure.Notifications;
 using Ordering.Infrastructure.Persistence;
 using Ordering.Infrastructure.Repositories;
 
